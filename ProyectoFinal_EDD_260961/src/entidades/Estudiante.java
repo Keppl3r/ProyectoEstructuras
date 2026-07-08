@@ -42,6 +42,6 @@ public class Estudiante implements Comparable<Estudiante> {
     }
 
     public void imprimirDatos() {
-        System.out.println(matricula + " - " + nombre + " - " + numTelefono);
+        System.out.println(matricula + " - " + nombre + " - " + numTelefono+ " - "+direccion);
     }
 }
