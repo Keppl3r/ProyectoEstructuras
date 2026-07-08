@@ -7,7 +7,6 @@ package pruebas;
 import entidades.Estudiante;
 import excepciones.VectorDinamicoException;
 
-
 /**
  *
  * @author keppler
@@ -18,7 +17,7 @@ public class PruebaVectorDinamico {
         System.out.println("Prueba vector dinamico con estudiantes");
 
         System.out.println("agregando 1 estudiante");
-        Estudiante estudiante1 = new Estudiante("AAA-001", "Kevin Mendoza", "6441666666", "kev@coo.com", "Calle 666");
+        Estudiante estudiante1 = new Estudiante("AAA-001", "Kevin Mendoza", "6441666666", "kev@coo.com", "Monesi 666");
         estudiante1.imprimirDatos();
         System.out.println("**********************************************");
 
@@ -40,7 +39,7 @@ public class PruebaVectorDinamico {
         System.out.println("**********************************************");
 
         // excepcion personalizada
-        System.out.println("Probando excepcion (pidiendo el indice 10)...");
+        System.out.println("Probando excepcion, pidiendo el indice 10 que no existe");
         try {
             estudiante1.getCalificaciones().obtener(10);
         } catch (VectorDinamicoException ex) {
@@ -48,5 +47,3 @@ public class PruebaVectorDinamico {
         }
     }
 }
-
-
