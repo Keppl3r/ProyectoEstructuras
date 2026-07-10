@@ -62,7 +62,7 @@ public class MenuPrincipal {
                 String nom = scanner.nextLine();
                 System.out.print("telefono ");
                 String tel = scanner.nextLine();
-                System.out.print("corre: ");
+                System.out.print("correo ");
                 String cor = scanner.nextLine();
                 System.out.print("direccion ");
                 String dir = scanner.nextLine();
