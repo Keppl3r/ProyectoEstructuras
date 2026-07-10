@@ -5,9 +5,11 @@
 package sistema;
 
 import entidades.Estudiante;
+import entidades.Curso;
 import estructuras.ArbolAVL;
 import estructuras.ArbolBinarioBusqueda;
 import estructuras.VectorDinamico;
+import estructuras.LinkedListDictionary;
 import excepciones.VectorDinamicoException;
 import java.util.Scanner;
 
@@ -20,6 +22,7 @@ public class MenuPrincipal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda();
+        LinkedListDictionary<Integer, Curso> cursos = new LinkedListDictionary<>();
 
        
         Estudiante e1 = new Estudiante("A1", "Ana Guzman", "111", "a@a.com", "Dir 1");
@@ -38,13 +41,15 @@ public class MenuPrincipal {
 
         int opcion = 0;
 
-        while (opcion != 4) {
+        while (opcion != 6) {
             System.out.println("\nMenu principal");
             System.out.println("***************************************");
             System.out.println("1. Registrar estudiante");
             System.out.println("2. Buscar estudiante por matricula");
             System.out.println("3. Listar estudiantes ordenados por promedio");
-            System.out.println("4. Salir");
+            System.out.println("4. Agregar curso");
+            System.out.println("5. Eliminar curso");
+            System.out.println("6. Salir");
             System.out.print("Opcion: ");
 
             try {
@@ -111,7 +116,46 @@ public class MenuPrincipal {
                 System.out.println("\npromedios en orden ascendente");
                 arbolAVL.imprimir();
 
-            } else if (opcion != 4) {
+            } else if (opcion == 4) {
+                // Agregar curso
+                System.out.print("Nombre del curso: ");
+                String nombreCurso = scanner.nextLine();
+                System.out.print("Clave del curso (numero): ");
+                int clave = 0;
+                try {
+                    clave = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException ex) {
+                    System.out.println("Clave invalida. Operacion cancelada.");
+                    continue;
+                }
+
+                if (cursos.contains(clave)) {
+                    System.out.println("Ya existe un curso con esa clave.");
+                } else {
+                    Curso nuevoCurso = new Curso(nombreCurso, clave);
+                    cursos.put(clave, nuevoCurso);
+                    System.out.println("Curso agregado: " + nuevoCurso.getNombre());
+                }
+
+            } else if (opcion == 5) {
+                // Eliminar curso
+                System.out.print("Ingrese la clave del curso a eliminar: ");
+                int claveEliminar = 0;
+                try {
+                    claveEliminar = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException ex) {
+                    System.out.println("Clave invalida. Operacion cancelada.");
+                    continue;
+                }
+
+                Curso eliminado = cursos.remove(claveEliminar);
+                if (eliminado != null) {
+                    System.out.println("Curso eliminado: " + eliminado.getNombre());
+                } else {
+                    System.out.println("No se encontro un curso con esa clave.");
+                }
+
+            } else if (opcion != 6) {
                 System.out.println("opcion invalida");
             }
         }
