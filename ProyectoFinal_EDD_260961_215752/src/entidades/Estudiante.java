@@ -10,7 +10,7 @@ import estructuras.VectorDinamico;
  *
  * @authors Juan Jose Meza Guarista 260961, Kevin Mendoza 215752
  */
-public class Estudiante implements Comparable<Estudiante> {
+public class Estudiante {
 
     private String matricula;
     private String nombre;
@@ -32,16 +32,15 @@ public class Estudiante implements Comparable<Estudiante> {
         return matricula;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public VectorDinamico<Double> getCalificaciones() {
         return calificaciones;
     }
 
-    @Override
-    public int compareTo(Estudiante otro) {
-        return this.matricula.compareTo(otro.getMatricula());
-    }
-
     public void imprimirDatos() {
-        System.out.println(matricula + " - " + nombre + " - " + numTelefono+ " - "+direccion);
+        System.out.println(matricula + " - " + nombre + " - " + numTelefono + " - " + direccion);
     }
 }
