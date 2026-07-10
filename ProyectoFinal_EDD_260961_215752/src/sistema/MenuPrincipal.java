@@ -22,7 +22,7 @@ public class MenuPrincipal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda();
-        HashDictionary<Integer, Curso> cursos = new HashDictionary<>(10);
+        HashDictionary<Integer, Curso> cursos = new HashDictionary<>(30);
 
        
         Estudiante e1 = new Estudiante("A1", "Ana Guzman", "111", "a@a.com", "Dir 1");
