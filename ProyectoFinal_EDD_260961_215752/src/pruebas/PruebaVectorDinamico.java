@@ -9,7 +9,7 @@ import excepciones.VectorDinamicoException;
 
 /**
  *
- * @author keppler
+ * @author Kevin Mendoza
  */
 public class PruebaVectorDinamico {
 

@@ -9,7 +9,7 @@ import estructuras.ArbolBinarioBusqueda;
 
 /**
  *
- * @author keppler
+ * @author Kevin Mendoza
  */
 public class PruebaBST {
 
@@ -19,7 +19,7 @@ public class PruebaBST {
     public static void main(String[] args) {
 
         System.out.println("Prueba de arbol binario de busqueda con estudiantes");
-        ArbolBinarioBusqueda<Estudiante> arbol = new ArbolBinarioBusqueda<>();
+        ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda();
 
         System.out.println("agregando estudiantes");
         Estudiante e1 = new Estudiante("MAT-002", "Ana Guzman", "1111111111", "ana@o.com", "Urbi 1");
@@ -35,8 +35,8 @@ public class PruebaBST {
      
         System.out.println("busqueda estudiante con matricula MAT-001:");
         Estudiante datoBusqueda = new Estudiante("MAT-001", "", "", "", "");
-        Estudiante encontrado = arbol.buscar(datoBusqueda);
-
+        Estudiante encontrado = arbol.buscar("MAT-001");
+        
         if (encontrado != null) {
             System.out.println("Estudiante encontrado :");
             encontrado.imprimirDatos(); 
@@ -48,7 +48,7 @@ public class PruebaBST {
         
         System.out.println("busqueda estudiante inexistente:");
         Estudiante datoFallo = new Estudiante("MAT-999", "", "", "", "");
-        Estudiante noEncontrado = arbol.buscar(datoFallo);
+        Estudiante noEncontrado = arbol.buscar(datoFallo.toString());
 
         if (noEncontrado == null) {
             System.out.println("Estudiante no encontrado (bien)");
