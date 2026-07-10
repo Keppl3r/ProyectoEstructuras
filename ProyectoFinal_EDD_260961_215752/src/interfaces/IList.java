@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 /**
  *
- * @author Asiganación 4 260961
+ * @author Juan Jose Meza Guarista 260961
  */
 public interface IList<T> {
    public void append(T o) throws ListException;
