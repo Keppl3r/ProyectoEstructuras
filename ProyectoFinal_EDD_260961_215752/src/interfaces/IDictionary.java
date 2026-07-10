@@ -4,7 +4,7 @@
  */
 package interfaces;
 
-import implementaciones.LinkedList;
+import estructuras.LinkedList;
 
 /**
  *

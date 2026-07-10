@@ -4,7 +4,7 @@
  */
 package estructuras;
 
-import implementaciones.LinkedList;
+import estructuras.LinkedList;
 import interfaces.IDictionary;
 
 /**
