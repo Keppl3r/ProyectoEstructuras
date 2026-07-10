@@ -9,7 +9,7 @@ import entidades.Curso;
 import estructuras.ArbolAVL;
 import estructuras.ArbolBinarioBusqueda;
 import estructuras.VectorDinamico;
-import estructuras.LinkedListDictionary;
+import estructuras.HashDictionary;
 import excepciones.VectorDinamicoException;
 import java.util.Scanner;
 
@@ -22,7 +22,7 @@ public class MenuPrincipal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda();
-        LinkedListDictionary<Integer, Curso> cursos = new LinkedListDictionary<>();
+        HashDictionary<Integer, Curso> cursos = new HashDictionary<>(10);
 
        
         Estudiante e1 = new Estudiante("A1", "Ana Guzman", "111", "a@a.com", "Dir 1");
