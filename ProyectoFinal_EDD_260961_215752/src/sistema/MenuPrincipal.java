@@ -1,17 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package sistema;
 
 import entidades.Estudiante;
+import entidades.Curso;
 import estructuras.ArbolAVL;
 import estructuras.ArbolBinarioBusqueda;
 import estructuras.ArregloDinamico;
+import estructuras.HashDictionary;
 import excepciones.ArregloDinamicoException;
 import java.util.Scanner;
 
 /**
+ *
  * @authors Juan Jose Meza Guarista 260961, Kevin Mendoza 215752
  */
 public class MenuPrincipal {
@@ -19,31 +18,21 @@ public class MenuPrincipal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda();
-
-       //insert inicial
-        Estudiante e1 = new Estudiante("A1", "Ana Guzman", "111", "a@a.com", "Dir 1");
-        Estudiante e2 = new Estudiante("A2", "Carlos Carrillo", "222", "c@c.com", "Dir 2");
-        Estudiante e3 = new Estudiante("A3", "Fran Mora", "333", "f@f.com", "Dir 3");
-
-        e1.getCalificaciones().agregar(100.0);
-        e1.getCalificaciones().agregar(90.0);
-        e2.getCalificaciones().agregar(70.0);
-        e2.getCalificaciones().agregar(80.0);
-        e3.getCalificaciones().agregar(60.0);
-
-        arbol.insertar(e1);
-        arbol.insertar(e2);
-        arbol.insertar(e3);
+        // 11 baldes 
+        HashDictionary<Integer, Curso> cursos = new HashDictionary<>(11);
 
         int opcion = 0;
 
-        while (opcion != 4) {
+        while (opcion != 7) {
             System.out.println("\nMenu principal");
             System.out.println("***************************************");
             System.out.println("1. Registrar estudiante");
             System.out.println("2. Buscar estudiante por matricula");
             System.out.println("3. Listar estudiantes ordenados por promedio");
-            System.out.println("4. Salir");
+            System.out.println("4. Agregar curso");
+            System.out.println("5. Eliminar curso");
+            System.out.println("6. Insertar datos de prueba");
+            System.out.println("7. Salir");
             System.out.print("Opcion: ");
 
             try {
@@ -110,7 +99,47 @@ public class MenuPrincipal {
                 System.out.println("\npromedios en orden ascendente");
                 arbolAVL.imprimir();
 
-            } else if (opcion != 4) {
+            } else if (opcion == 4) {
+                System.out.print("nombre del curso ");
+                String nombreCurso = scanner.nextLine();
+                System.out.print("clave del curso ");
+                int clave = 0;
+                try {
+                    clave = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException ex) {
+                    System.out.println("clave invalida");
+                    continue;
+                }
+
+                if (cursos.contains(clave)) {
+                    System.out.println("ya existe un curso con esa clave");
+                } else {
+                    Curso nuevoCurso = new Curso(nombreCurso, clave);
+                    cursos.put(clave, nuevoCurso);
+                    System.out.println("curso agregado " + nuevoCurso.getNombre());
+                }
+
+            } else if (opcion == 5) {
+                System.out.print("clave del curso a eliminar: ");
+                int claveEliminar = 0;
+                try {
+                    claveEliminar = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException ex) {
+                    System.out.println("clave invalida");
+                    continue;
+                }
+
+                Curso eliminado = cursos.remove(claveEliminar);
+                if (eliminado != null) {
+                    System.out.println("curso eliminado " + eliminado.getNombre());
+                } else {
+                    System.out.println("no se encontro un curso con esa clave");
+                }
+
+            } else if (opcion == 6) {
+                pruebas.insertDatos.cargar(arbol, cursos);
+
+            } else if (opcion != 7) {
                 System.out.println("opcion invalida");
             }
         }
