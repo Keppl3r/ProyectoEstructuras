@@ -36,16 +36,12 @@ public class Curso {
     public void setClaveCurso(int claveCurso) {
         this.claveCurso = claveCurso;
     }
-
+    
     public LinkedList<Estudiante> getEstudiantesInscritos() {
         return estudiantesInscritos;
     }
-
-    /**
-     * Inscribir un estudiante en el curso
-     * @param estudiante Estudiante a inscribir
-     * @return true si la inscripción fue exitosa, false si ya estaba inscrito
-     */
+    
+    //Inscribir un estudiante en el curso
     public boolean inscribirEstudiante(Estudiante estudiante) {
         if (estudiante == null) {
             return false;
@@ -60,11 +56,7 @@ public class Curso {
         return true;
     }
 
-    /**
-     * Desinscribir un estudiante del curso
-     * @param matricula Matrícula del estudiante a desinscribir
-     * @return true si la desinscripción fue exitosa, false si no estaba inscrito
-     */
+    //Desinscribir un estudiante del curso
     public boolean desinscribirEstudiante(String matricula) {
         for (Estudiante est : estudiantesInscritos) {
             if (est.getMatricula().equals(matricula)) {
@@ -75,19 +67,12 @@ public class Curso {
         return false;
     }
 
-    /**
-     * Obtener el número de estudiantes inscritos
-     * @return Cantidad de estudiantes inscritos
-     */
+    //Obtener el número de estudiantes inscritos
     public int getNumEstudiantes() {
         return estudiantesInscritos.size();
     }
 
-    /**
-     * Verificar si un estudiante está inscrito en el curso
-     * @param matricula Matrícula del estudiante
-     * @return true si está inscrito, false en caso contrario
-     */
+    //Verificar si un estudiante está inscrito en el curso
     public boolean estudianteInscrito(String matricula) {
         for (Estudiante est : estudiantesInscritos) {
             if (est.getMatricula().equals(matricula)) {
@@ -97,9 +82,7 @@ public class Curso {
         return false;
     }
 
-    /**
-     * Listar todos los estudiantes inscritos en el curso
-     */
+    //Listar todos los estudiantes inscritos en el curso
     public void listarEstudiantes() {
         System.out.println("\n=== Estudiantes inscritos en " + nombre + " (Clave: " + claveCurso + ") ===");
         if (estudiantesInscritos.size() == 0) {
