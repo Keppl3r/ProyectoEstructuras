@@ -23,7 +23,7 @@ public class MenuPrincipal {
 
         int opcion = 0;
 
-        while (opcion != 7) {
+        while (opcion != 10) {
             System.out.println("\nMenu principal");
             System.out.println("***************************************");
             System.out.println("1. Registrar estudiante");
@@ -31,8 +31,11 @@ public class MenuPrincipal {
             System.out.println("3. Listar estudiantes ordenados por promedio");
             System.out.println("4. Agregar curso");
             System.out.println("5. Eliminar curso");
-            System.out.println("6. Insertar datos de prueba");
-            System.out.println("7. Salir");
+            System.out.println("6. Inscribir estudiante en curso");
+            System.out.println("7. Desinscribir estudiante de curso");
+            System.out.println("8. Listar estudiantes de un curso");
+            System.out.println("9. Insertar datos de prueba");
+            System.out.println("10. Salir");
             System.out.print("Opcion: ");
 
             try {
@@ -44,15 +47,15 @@ public class MenuPrincipal {
             }
 
             if (opcion == 1) {
-                System.out.print("matricula ");
+                System.out.print("matricula: ");
                 String mat = scanner.nextLine();
-                System.out.print("nombre ");
+                System.out.print("nombre: ");
                 String nom = scanner.nextLine();
-                System.out.print("telefono ");
+                System.out.print("telefono: ");
                 String tel = scanner.nextLine();
-                System.out.print("correo ");
+                System.out.print("correo: ");
                 String cor = scanner.nextLine();
-                System.out.print("direccion ");
+                System.out.print("direccion: ");
                 String dir = scanner.nextLine();
 
                 Estudiante nuevo = new Estudiante(mat, nom, tel, cor, dir);
@@ -60,7 +63,7 @@ public class MenuPrincipal {
                 System.out.println("estudiante registrado");
 
             } else if (opcion == 2) {
-                System.out.print("matricula a buscar ");
+                System.out.print("matricula a buscar: ");
                 String mat = scanner.nextLine();
                 Estudiante enc = arbol.buscar(mat);
 
@@ -100,9 +103,9 @@ public class MenuPrincipal {
                 arbolAVL.imprimir();
 
             } else if (opcion == 4) {
-                System.out.print("nombre del curso ");
+                System.out.print("nombre del curso: ");
                 String nombreCurso = scanner.nextLine();
-                System.out.print("clave del curso ");
+                System.out.print("clave del curso: ");
                 int clave = 0;
                 try {
                     clave = Integer.parseInt(scanner.nextLine());
@@ -116,7 +119,7 @@ public class MenuPrincipal {
                 } else {
                     Curso nuevoCurso = new Curso(nombreCurso, clave);
                     cursos.put(clave, nuevoCurso);
-                    System.out.println("curso agregado " + nuevoCurso.getNombre());
+                    System.out.println("curso agregado: " + nuevoCurso.getNombre());
                 }
 
             } else if (opcion == 5) {
@@ -131,15 +134,84 @@ public class MenuPrincipal {
 
                 Curso eliminado = cursos.remove(claveEliminar);
                 if (eliminado != null) {
-                    System.out.println("curso eliminado " + eliminado.getNombre());
+                    System.out.println("curso eliminado: " + eliminado.getNombre());
                 } else {
                     System.out.println("no se encontro un curso con esa clave");
                 }
 
             } else if (opcion == 6) {
+                System.out.print("matricula del estudiante: ");
+                String matEstudiante = scanner.nextLine();
+                Estudiante est = arbol.buscar(matEstudiante);
+
+                if (est == null) {
+                    System.out.println("estudiante no encontrado");
+                } else {
+                    System.out.print("clave del curso: ");
+                    int claveCurso = 0;
+                    try {
+                        claveCurso = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException ex) {
+                        System.out.println("clave invalida");
+                        continue;
+                    }
+
+                    Curso curso = cursos.get(claveCurso);
+                    if (curso == null) {
+                        System.out.println("curso no encontrado");
+                    } else {
+                        if (curso.inscribirEstudiante(est)) {
+                            System.out.println("estudiante inscrito en: " + curso.getNombre());
+                        } else {
+                            System.out.println("estudiante ya estaba inscrito o hay un error");
+                        }
+                    }
+                }
+
+            } else if (opcion == 7) {
+                System.out.print("matricula del estudiante: ");
+                String matEstudiante = scanner.nextLine();
+                System.out.print("clave del curso: ");
+                int claveCurso = 0;
+                try {
+                    claveCurso = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException ex) {
+                    System.out.println("clave invalida");
+                    continue;
+                }
+
+                Curso curso = cursos.get(claveCurso);
+                if (curso == null) {
+                    System.out.println("curso no encontrado");
+                } else {
+                    if (curso.desinscribirEstudiante(matEstudiante)) {
+                        System.out.println("estudiante desinscrito de: " + curso.getNombre());
+                    } else {
+                        System.out.println("estudiante no estaba inscrito en este curso");
+                    }
+                }
+
+            } else if (opcion == 8) {
+                System.out.print("clave del curso: ");
+                int claveCurso = 0;
+                try {
+                    claveCurso = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException ex) {
+                    System.out.println("clave invalida");
+                    continue;
+                }
+
+                Curso curso = cursos.get(claveCurso);
+                if (curso != null) {
+                    curso.listarEstudiantes();
+                } else {
+                    System.out.println("curso no encontrado");
+                }
+
+            } else if (opcion == 9) {
                 pruebas.insertDatos.cargar(arbol, cursos);
 
-            } else if (opcion != 7) {
+            } else if (opcion != 10) {
                 System.out.println("opcion invalida");
             }
         }
