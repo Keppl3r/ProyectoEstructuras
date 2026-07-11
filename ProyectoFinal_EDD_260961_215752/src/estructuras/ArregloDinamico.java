@@ -6,14 +6,14 @@ package estructuras;
 
 
 import interfaces.IVector;
-import excepciones.VectorDinamicoException;
+import excepciones.ArregloDinamicoException;
 import java.lang.reflect.Array;
 
 /**
  *
  * @author Kevin Mendoza 215752
  */
-public class VectorDinamico<T> implements IVector<T> {
+public class ArregloDinamico<T> implements IVector<T> {
 
     private T[] datos;
     private int capacidad;
@@ -21,7 +21,7 @@ public class VectorDinamico<T> implements IVector<T> {
     private Class<T> tipo;
 
     
-    public VectorDinamico(Class<T> tipo) {
+    public ArregloDinamico(Class<T> tipo) {
         this.tipo = tipo;
         this.capacidad = 5;
         this.datos = (T[]) Array.newInstance(this.tipo, this.capacidad);
@@ -50,9 +50,9 @@ public class VectorDinamico<T> implements IVector<T> {
     }
 
     @Override
-    public T obtener(int indice) throws VectorDinamicoException {
+    public T obtener(int indice) throws ArregloDinamicoException {
         if (indice < 0 || indice >= nElementos) {
-            throw new VectorDinamicoException("indice fuera de rango: " + indice);
+            throw new ArregloDinamicoException("indice invalido " + indice);
         }
         return datos[indice];
     }

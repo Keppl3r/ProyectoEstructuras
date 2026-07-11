@@ -5,7 +5,7 @@
 package pruebas;
 
 import entidades.Estudiante;
-import excepciones.VectorDinamicoException;
+import excepciones.ArregloDinamicoException;
 
 /**
  *
@@ -42,7 +42,7 @@ public class PruebaVectorDinamico {
         System.out.println("Probando excepcion, pidiendo el indice 10 que no existe");
         try {
             estudiante1.getCalificaciones().obtener(10);
-        } catch (VectorDinamicoException ex) {
+        } catch (ArregloDinamicoException ex) {
             System.out.println("excepcion vector dinamico activada: " + ex.getMessage());
         }
     }

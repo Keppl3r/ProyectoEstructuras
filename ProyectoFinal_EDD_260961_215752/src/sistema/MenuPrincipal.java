@@ -7,12 +7,11 @@ package sistema;
 import entidades.Estudiante;
 import estructuras.ArbolAVL;
 import estructuras.ArbolBinarioBusqueda;
-import estructuras.VectorDinamico;
-import excepciones.VectorDinamicoException;
+import estructuras.ArregloDinamico;
+import excepciones.ArregloDinamicoException;
 import java.util.Scanner;
 
 /**
- *
  * @authors Juan Jose Meza Guarista 260961, Kevin Mendoza 215752
  */
 public class MenuPrincipal {
@@ -21,7 +20,7 @@ public class MenuPrincipal {
         Scanner scanner = new Scanner(System.in);
         ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda();
 
-       
+       //insert inicial
         Estudiante e1 = new Estudiante("A1", "Ana Guzman", "111", "a@a.com", "Dir 1");
         Estudiante e2 = new Estudiante("A2", "Carlos Carrillo", "222", "c@c.com", "Dir 2");
         Estudiante e3 = new Estudiante("A3", "Fran Mora", "333", "f@f.com", "Dir 3");
@@ -84,7 +83,7 @@ public class MenuPrincipal {
 
             } else if (opcion == 3) {
                 ArbolAVL arbolAVL = new ArbolAVL();
-                VectorDinamico<Estudiante> todos = arbol.obtenerElementosEnOrden(Estudiante.class);
+                ArregloDinamico<Estudiante> todos = arbol.obtenerElementosEnOrden(Estudiante.class);
 
                 for (int i = 0; i < todos.getNumeroElementos(); i++) {
                     try {
@@ -103,7 +102,7 @@ public class MenuPrincipal {
 
                         arbolAVL.insertar(promedio, est);
 
-                    } catch (VectorDinamicoException ex) {
+                    } catch (ArregloDinamicoException ex) {
                         System.out.println(ex.getMessage());
                     }
                 }

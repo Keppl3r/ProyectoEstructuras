@@ -8,7 +8,7 @@ import entidades.Estudiante;
 
 /**
  *
- * @author keppler
+ * @author Kevin Mendoza
  */
 public class ArbolAVL {
 
@@ -94,15 +94,15 @@ public class ArbolAVL {
         if (raiz == null) {
             System.out.println("no hay datos en el AVL");
         } else {
-            recorridoInOrden(raiz);
+            recorridoEnOrden(raiz);
         }
     }
 
-    private void recorridoInOrden(NodoAVL nodo) {
+    private void recorridoEnOrden(NodoAVL nodo) {
         if (nodo != null) {
-            recorridoInOrden(nodo.getIzquierdo());
+            recorridoEnOrden(nodo.getIzquierdo());
             System.out.println("Promedio: " + nodo.getPromedio() + "  Estudiante: " + nodo.getEstudiante().getNombre());
-            recorridoInOrden(nodo.getDerecho());
+            recorridoEnOrden(nodo.getDerecho());
         }
     }
 }

@@ -28,8 +28,6 @@ public class ArbolBinarioBusqueda implements ITree<Estudiante> {
         if (nodo == null) {
             return new NodoArbolBinario<>(dato);
         }
-
-        // Comparacion cruda y directa de las matriculas (Strings)
         int comparacion = dato.getMatricula().compareTo(nodo.getDato().getMatricula());
 
         if (comparacion < 0) {
@@ -68,13 +66,13 @@ public class ArbolBinarioBusqueda implements ITree<Estudiante> {
         return raiz.getDato();
     }
 
-    public VectorDinamico<Estudiante> obtenerElementosEnOrden(Class<Estudiante> tipo) {
-        VectorDinamico<Estudiante> vector = new VectorDinamico<>(tipo);
+    public ArregloDinamico<Estudiante> obtenerElementosEnOrden(Class<Estudiante> tipo) {
+        ArregloDinamico<Estudiante> vector = new ArregloDinamico<>(tipo);
         recorrer(raiz, vector);
         return vector;
     }
 
-    private void recorrer(NodoArbolBinario<Estudiante> nodo, VectorDinamico<Estudiante> vector) {
+    private void recorrer(NodoArbolBinario<Estudiante> nodo, ArregloDinamico<Estudiante> vector) {
         if (nodo != null) {
             recorrer(nodo.getIzquierdo(), vector);
             vector.agregar(nodo.getDato());

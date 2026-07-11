@@ -4,7 +4,7 @@
  */
 package interfaces;
 
-import excepciones.VectorDinamicoException;
+import excepciones.ArregloDinamicoException;
 
 /**
  *
@@ -14,7 +14,7 @@ public interface IVector<T> {
 
     public void agregar(T elemento);
 
-    public T obtener(int indice) throws VectorDinamicoException;
+    public T obtener(int indice) throws ArregloDinamicoException;
 
     public int getNumeroElementos();
 }

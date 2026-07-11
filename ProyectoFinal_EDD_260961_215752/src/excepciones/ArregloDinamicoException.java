@@ -8,9 +8,9 @@ package excepciones;
  *
  * @author keppler
  */
-public class VectorDinamicoException extends RuntimeException {
+public class ArregloDinamicoException extends RuntimeException {
 
-    public VectorDinamicoException(String mensaje) {
+    public ArregloDinamicoException(String mensaje) {
         super(mensaje);
     }
 }

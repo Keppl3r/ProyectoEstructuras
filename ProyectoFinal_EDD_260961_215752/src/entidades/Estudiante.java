@@ -4,7 +4,7 @@
  */
 package entidades;
 
-import estructuras.VectorDinamico;
+import estructuras.ArregloDinamico;
 
 /**
  *
@@ -17,7 +17,7 @@ public class Estudiante {
     private String numTelefono;
     private String correo;
     private String direccion;
-    private VectorDinamico<Double> calificaciones;
+    private ArregloDinamico<Double> calificaciones;
 
     public Estudiante(String matricula, String nombre, String numTelefono, String correo, String direccion) {
         this.matricula = matricula;
@@ -25,7 +25,7 @@ public class Estudiante {
         this.numTelefono = numTelefono;
         this.correo = correo;
         this.direccion = direccion;
-        this.calificaciones = new VectorDinamico<>(Double.class);
+        this.calificaciones = new ArregloDinamico<>(Double.class);
     }
 
     public String getMatricula() {
@@ -36,7 +36,7 @@ public class Estudiante {
         return nombre;
     }
 
-    public VectorDinamico<Double> getCalificaciones() {
+    public ArregloDinamico<Double> getCalificaciones() {
         return calificaciones;
     }
 
